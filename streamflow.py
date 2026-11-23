@@ -30,6 +30,8 @@ def plot_streamflow(dates, y_1, y_2, y_3, y_4, y_5):
     plt.xticks(rotation=45)
     plt.legend(title="Site Numbers", loc="upper right")
     plt.grid()
+    # Save the plot to a file before displaying it
+    plt.savefig("provo_river_streamflow.png", dpi=150, bbox_inches="tight")
     plt.show()
 
 
