@@ -42,7 +42,7 @@ plot_streamflow(dates, y_1, y_2, y_3, y_4, y_5)
 
 
 # Create a summary report of the streamflow data
-# Excel: 
+# Excel: maximum for 10163000 is 131 & the mean is 56.95
 def summarize(dates, flows, sites):
     """Print and save the maximum, minimum, and average flow for each gauge."""
     print(f"{'Gauge':<12}{'Max (cfs)':<12}{'Date of max':<22}{'Min (cfs)':<12}{'Avg (cfs)':<12}")       # AI: this f-string format separates each table header followed by a colon indicating the number of characters wanting to be preserved for each column
