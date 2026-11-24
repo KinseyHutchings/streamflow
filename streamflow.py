@@ -64,9 +64,20 @@ def summarize(dates, flows, sites):
                 f"{minimum:<12.1f}{average:<12.1f}"
             )
             file.write(
-                f"{site},{maximum:.1f},{maximum_date},{minimum:.1f},{average:.1f}\n"
+                f"{site},{maximum:.1f},{maximum_date},{minimum:.1f},{average:.1f}\n"    # AI: write each of the gauge statistics to the CSV file following the same format as above
             )
 
 
 flows = np.column_stack((y_1, y_2, y_3, y_4, y_5))      # AI: column stack combines five separate 1D arrays into one 2D array called flows
 summarize(dates, flows, sites)
+
+
+# Ask the user for a threshold water level
+threshold = float(input("Enter a threshold water level (cfs): "))       # AI: asks the user to input the threshold water level in cfs
+
+# For each gauge, find and print the number of hours in June 2021 when the flow was above the threshold
+for i, site in enumerate(sites):                                            # AI: iterates through each site to calculate the hours above the threshold
+    gauge_flows = flows[:, i]
+    measurements_above_threshold = np.sum(gauge_flows > threshold)       # AI: counts the number of gauge_flow measurements above the threshold
+    hours_above_threshold = measurements_above_threshold * 0.25          # AI: converts the number of measurements to hours (time is measured in 15-minute intervals)
+    print(f"Site {site}: {hours_above_threshold} hours above threshold")  # AI: prints the number of hours above the threshold for each site
